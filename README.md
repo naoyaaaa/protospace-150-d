@@ -12,7 +12,7 @@ has_many:prototypes
 | name             | string | null: false                    |
 | profile          | text   | null: false                    |
 | occupation       | text   | null: false                    |
-| posision         | text   | null: false                    |
+| position         | text   | null: false                    |
 
 ## prototypeテーブル
 ### Association
