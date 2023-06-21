@@ -3,6 +3,16 @@
 
 ## userテーブル
 ### Association
+has_many:comments
+has_many:prototypes
+
+| Column           | Type   | Options                        |
+| email            | string | null: false,unique: true       |
+| encrypt_password | string | null: false                    |
+| name             | string | null: false                    |
+| profile          | text   | null: false                    |
+| occupation       | text   | null: false                    |
+| posision         | text   | null: false                    |
 
 ## prototypeテーブル
 ### Association
@@ -12,8 +22,3 @@
 
 例
 ## userテーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| group  | references | null: false, foreign_key: true |
