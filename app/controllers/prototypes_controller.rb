@@ -2,6 +2,10 @@ class PrototypesController < ApplicationController
   def index
   end
 
+  def new
+    @prototype = Prototype.new
+  end
+
   private
 
   def prototype_params
