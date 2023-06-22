@@ -1,4 +1,16 @@
 class PrototypesController < ApplicationController
-  def index
+    def index
+    end
+  
+    def show
+      @prototype = Prototype.find(params[:id])
+    end
+
+    def destroy
+      prototype = Prototype.find(params[:id])
+      prototype.destroy
+      redirect_to root_path
+    end
+    
   end
-end
+  
