@@ -6,6 +6,15 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.new
   end
 
+  def create
+    prototype = Prototype.new(prototype_params)
+    if prototype.save
+      redirect_to "/"      
+    else
+      render :new      
+    end
+  end
+
   private
 
   def prototype_params
