@@ -2,6 +2,7 @@ class PrototypesController < ApplicationController
   before_action :move_to_index, except:[:index,:show]
 
   def index
+    @prototype = Prototype.all
   end
 
   def new
@@ -13,14 +14,14 @@ class PrototypesController < ApplicationController
     if prototype.save
       redirect_to "/"      
     else
-      render :new      
+      render :new
     end
   end
 
   private
 
   def prototype_params
-    params.require(:prototype).permit(:content, :image).merge(user_id: current_user.id)
+    params.require(:prototype).permit(:title,:catch_copy,:concept,:image).merge(user_id: current_user.id)
   end
 
   def move_to_index
