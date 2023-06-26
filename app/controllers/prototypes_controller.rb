@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :move_to_index, except:[:index,:show]
+  before_action :move_to_session, only:[:destroy]
 
   def index
     @prototype = Prototype.all
@@ -23,13 +24,9 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if user_signed_in?
       prototype = Prototype.find(params[:id])
       prototype.destroy
       redirect_to root_path
-    else
-      redirect_to new_user_session_path
-    end
   end
 
   private
@@ -41,6 +38,12 @@ class PrototypesController < ApplicationController
   def move_to_index
     unless user_signed_in?
       redirect_to action: :index
+    end
+  end
+
+  def move_to_session
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
   end
       
