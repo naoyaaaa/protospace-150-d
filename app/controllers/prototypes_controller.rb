@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :move_to_session,only:[:edit]
+  before_action :move_to_session,only:[:edit, :destroy]
   before_action :move_to_edit_index, only: [:edit]
   before_action :move_to_index, except:[:index,:show]
 
@@ -35,8 +35,14 @@ class PrototypesController < ApplicationController
     else
       render :edit
     end
-  end  
-
+  end
+  
+  def destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
+  end
+  
   private
 
   def prototype_params
@@ -60,6 +66,5 @@ class PrototypesController < ApplicationController
     unless user_signed_in?
       redirect_to new_user_session_path
     end
-  end  
-      
+  end      
 end
